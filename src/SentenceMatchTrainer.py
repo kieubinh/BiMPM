@@ -22,7 +22,7 @@ def collect_vocabs(train_path, with_POS=False, with_NER=False):
     if with_NER: all_NERs = set()
     infile = open(train_path, 'rt')
     for line in infile:
-        line = line.decode('utf-8').strip()
+        line = line.strip()
         if line.startswith('-'): continue
         items = re.split("\t", line)
         label = items[0]
