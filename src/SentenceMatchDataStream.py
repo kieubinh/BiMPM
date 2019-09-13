@@ -8,7 +8,7 @@ def make_batches(size, batch_size):
 def pad_2d_vals(in_vals, dim1_size, dim2_size, dtype=np.int32):
     out_val = np.zeros((dim1_size, dim2_size), dtype=dtype)
     if dim1_size > len(in_vals): dim1_size = len(in_vals)
-    for i in xrange(dim1_size):
+    for i in range(dim1_size):
         cur_in_vals = in_vals[i]
         cur_dim2_size = dim2_size
         if cur_dim2_size > len(cur_in_vals): cur_dim2_size = len(cur_in_vals)
@@ -18,11 +18,11 @@ def pad_2d_vals(in_vals, dim1_size, dim2_size, dtype=np.int32):
 def pad_3d_vals(in_vals, dim1_size, dim2_size, dim3_size, dtype=np.int32):
     out_val = np.zeros((dim1_size, dim2_size, dim3_size), dtype=dtype)
     if dim1_size > len(in_vals): dim1_size = len(in_vals)
-    for i in xrange(dim1_size):
+    for i in range(dim1_size):
         in_vals_i = in_vals[i]
         cur_dim2_size = dim2_size
         if cur_dim2_size > len(in_vals_i): cur_dim2_size = len(in_vals_i)
-        for j in xrange(cur_dim2_size):
+        for j in range(cur_dim2_size):
             in_vals_ij = in_vals_i[j]
             cur_dim3_size = dim3_size
             if cur_dim3_size > len(in_vals_ij): cur_dim3_size = len(in_vals_ij)
@@ -87,7 +87,7 @@ class SentenceMatchDataStream(object):
         self.batches = []
         for batch_index, (batch_start, batch_end) in enumerate(batch_spans):
             cur_instances = []
-            for i in xrange(batch_start, batch_end):
+            for i in range(batch_start, batch_end):
                 cur_instances.append(instances[i])
             cur_batch = InstanceBatch(cur_instances, with_char=options.with_char)
             self.batches.append(cur_batch)

@@ -1,6 +1,6 @@
 import tensorflow as tf
-import layer_utils
-import match_utils
+from . import layer_utils
+from . import match_utils
 
 
 class SentenceMatchModelGraph(object):
@@ -173,7 +173,7 @@ class SentenceMatchModelGraph(object):
 
         grads = layer_utils.compute_gradients(self.loss, tvars)
         grads, _ = tf.clip_by_global_norm(grads, self.options.grad_clipper)
-        self.train_op = optimizer.apply_gradients(zip(grads, tvars), global_step=global_step)
+        self.train_op = optimizer.apply_gradients(list(zip(grads, tvars)), global_step=global_step)
         # self.train_op = optimizer.apply_gradients(zip(grads, tvars))
 
         if self.options.with_moving_average:

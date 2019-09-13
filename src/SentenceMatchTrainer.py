@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 import argparse
 import os
 import sys
@@ -8,10 +8,10 @@ import re
 import tensorflow as tf
 import json
 
-from vocab_utils import Vocab
-from SentenceMatchDataStream import SentenceMatchDataStream
-from SentenceMatchModelGraph import SentenceMatchModelGraph
-import namespace_utils
+from .vocab_utils import Vocab
+from .SentenceMatchDataStream import SentenceMatchDataStream
+from .SentenceMatchModelGraph import SentenceMatchModelGraph
+from . import namespace_utils
 
 def collect_vocabs(train_path, with_POS=False, with_NER=False):
     all_labels = set()
@@ -47,7 +47,7 @@ def collect_vocabs(train_path, with_POS=False, with_NER=False):
 
 def output_probs(probs, label_vocab):
     out_string = ""
-    for i in xrange(probs.size):
+    for i in range(probs.size):
         out_string += " {}:{}".format(label_vocab.getWord(i), probs[i])
     return out_string.strip()
 
@@ -56,14 +56,14 @@ def evaluation(sess, valid_graph, devDataStream, outpath=None, label_vocab=None)
         result_json = {}
     total = 0
     correct = 0
-    for batch_index in xrange(devDataStream.get_num_batch()):  # for each batch
+    for batch_index in range(devDataStream.get_num_batch()):  # for each batch
         cur_batch = devDataStream.get_batch(batch_index)
         total += cur_batch.batch_size
         feed_dict = valid_graph.create_feed_dict(cur_batch, is_training=True)
         [cur_correct, probs, predictions] = sess.run([valid_graph.eval_correct, valid_graph.prob, valid_graph.predictions], feed_dict=feed_dict)
         correct += cur_correct
         if outpath is not None:
-            for i in xrange(cur_batch.batch_size):
+            for i in range(cur_batch.batch_size):
                 (label, sentence1, sentence2, _, _, _, _, _, cur_ID) = cur_batch.instances[i]
                 result_json[cur_ID] = {
                     "ID": cur_ID,
@@ -88,7 +88,7 @@ def train(sess, saver, train_graph, valid_graph, trainDataStream, devDataStream,
         num_batch = trainDataStream.get_num_batch()
         start_time = time.time()
         total_loss = 0
-        for batch_index in xrange(num_batch):  # for each batch
+        for batch_index in range(num_batch):  # for each batch
             cur_batch = trainDataStream.get_batch(batch_index)
             feed_dict = train_graph.create_feed_dict(cur_batch, is_training=True)
             _, loss_value = sess.run([train_graph.train_op, train_graph.loss], feed_dict=feed_dict)
@@ -198,7 +198,7 @@ def main(FLAGS):
         train(sess, saver, train_graph, valid_graph, trainDataStream, devDataStream, FLAGS, best_path)
 
 def enrich_options(options):
-    if not options.__dict__.has_key("in_format"):
+    if "in_format" not in options.__dict__:
         options.__dict__["in_format"] = 'tsv'
 
     return options
