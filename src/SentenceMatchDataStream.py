@@ -37,7 +37,7 @@ def read_all_instances(inpath, word_vocab=None, label_vocab=None, char_vocab=Non
     idx = -1
     for line in infile:
         idx += 1
-        line = line.decode('utf-8').strip()
+        line = line.strip()
         if line.startswith('-'): continue
         items = re.split("\t", line)
         label = items[0]
