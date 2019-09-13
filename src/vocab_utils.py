@@ -69,7 +69,7 @@ class Vocab(object):
         self.vocab_size, self.word_dim = list(map(int, header.split()))
         word_vecs = {}
         for line in vec_file:
-            line = line.decode('utf-8').strip()
+            line = line.strip()
             parts = line.split(' ')
             word = parts[0]
             if (voc is not None) and (word not in voc): continue
@@ -94,7 +94,7 @@ class Vocab(object):
         vec_file = open(vec_path, 'rt')
         word_vecs = {}
         for line in vec_file:
-            line = line.decode('utf-8').strip()
+            line = line.strip()
             parts = line.split('\t')
             cur_index = int(parts[0])
             word = parts[1]
@@ -125,7 +125,7 @@ class Vocab(object):
 #         self.vocab_size, self.word_dim = map(int, header.split())
         word_vecs = {}
         for line in vec_file:
-            line = line.decode('utf-8')
+            #line = line.decode('utf-8')
             if line[0] == line[1] == ' ':
                 word = ' '
                 parts = [' '] + line.strip().split(' ')
@@ -158,7 +158,7 @@ class Vocab(object):
         self.vocab_size, self.word_dim = list(map(int, header.split()))
         self.word_vecs = np.zeros((self.vocab_size+1, self.word_dim), dtype=np.float32) # the last dimension is all zero
         for line in vec_file:
-            line = line.decode('utf-8').strip()
+            line = line.strip()
             parts = line.split(' ')
             word = parts[0]
             if (voc is not None) and (word not in voc): continue
