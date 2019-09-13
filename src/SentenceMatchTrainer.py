@@ -8,10 +8,10 @@ import re
 import tensorflow as tf
 import json
 
-from .vocab_utils import Vocab
-from .SentenceMatchDataStream import SentenceMatchDataStream
-from .SentenceMatchModelGraph import SentenceMatchModelGraph
-from . import namespace_utils
+from vocab_utils import Vocab
+from SentenceMatchDataStream import SentenceMatchDataStream
+from SentenceMatchModelGraph import SentenceMatchModelGraph
+import namespace_utils
 
 def collect_vocabs(train_path, with_POS=False, with_NER=False):
     all_labels = set()
