@@ -1,17 +1,13 @@
 # BiMPM: Bilateral Multi-Perspective Matching for Natural Language Sentences
 
-## Updates (Jan 28, 2018)
-* This repository has been updated to tensorflow 1.5
-* The training process speeds up 15+ times without lossing the accuracy.
-* All codes have been re-constructed for better readability and adaptability.
+## Updates (Sep, 2019)
+* This repository is orginated from zhiguowang/BiMPM
+* Convert code to python3
 
 ## Description
-This repository includes the source code for natural language sentence matching. 
-Basically, the program takes two sentences as input, and predict a label for the two input sentences. 
-You can use this program to deal with tasks like [paraphrase identification](https://aclweb.org/aclwiki/index.php?title=Paraphrase_Identification_%28State_of_the_art%29), [natural language inference](http://nlp.stanford.edu/projects/snli/), [duplicate questions identification](https://data.quora.com/First-Quora-Dataset-Release-Question-Pairs) et al. More details about the underneath model can be found in our [paper](https://arxiv.org/pdf/1702.03814.pdf) published in IJCAI 2017. Please cite our paper when you use this program! :heart_eyes:
 
 ## Requirements
-* python 2.7
+* python 3.6
 * tensorflow 1.5
 
 ## Data format
@@ -60,7 +56,3 @@ The output file is a json file with the follwing format.
     }
 }
 ```
-
-
-## Reporting issues
-Please let [me](https://zhiguowang.github.io/) know, if you encounter any problems.
