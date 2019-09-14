@@ -33,7 +33,7 @@ def pad_3d_vals(in_vals, dim1_size, dim2_size, dim3_size, dtype=np.int32):
 def read_all_instances(inpath, word_vocab=None, label_vocab=None, char_vocab=None, max_sent_length=100,
                        max_char_per_word=10, isLower=True):
     instances = []
-    infile = open(inpath, 'rt')
+    infile = open(inpath, 'rt', encoding="utf8")
     idx = -1
     for line in infile:
         idx += 1
