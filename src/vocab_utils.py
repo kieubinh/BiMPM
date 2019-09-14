@@ -120,7 +120,7 @@ class Vocab(object):
         self.word2id = {}
         self.id2word = {}
         
-        vec_file = open(vec_path, 'rt')
+        vec_file = open(vec_path, 'rt', encoding="utf8")
 #         header = vec_file.readline()
 #         self.vocab_size, self.word_dim = map(int, header.split())
         word_vecs = {}

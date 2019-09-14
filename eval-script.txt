@@ -1,0 +1,1 @@
+python src/SentenceMatchDecoder.py --in_path ../data/quora/dev.tsv --word_vec_path ../data/quora/wordvec.txt --out_path result.json --model_prefix ../data/quora/logs/SentenceMatch.quora
