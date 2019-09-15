@@ -28,7 +28,8 @@ def evaluation(out_file=None):
 
 
 def main():
-    print(evaluation(out_file="result.json"))
+    print(evaluation(out_file="result_dev.json"))
+    #print(evaluation(out_file="result_full_match+attention_match.json"))
 
 
 if __name__ == '__main__':
